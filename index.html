@@ -3,85 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discord CRM · Digital</title>
+    <title>Discord CRM · Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="bg-grid"></div>
-    <div class="bg-glow"></div>
-
     <div class="app">
         <!-- HEADER -->
         <header class="header">
             <div class="header-left">
-                <div class="logo-mark">◆</div>
-                <div>
-                    <h1>DSCRM</h1>
-                    <span class="version">v2.0 · digital</span>
-                </div>
+                <span class="logo-icon">◆</span>
+                <h1>Discord CRM</h1>
             </div>
             <div class="header-right">
-                <div class="stat-item">
-                    <span class="stat-value" id="userCount">0</span>
-                    <span class="stat-label">users</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-value" id="warnCount">0</span>
-                    <span class="stat-label">warns</span>
-                </div>
+                <span class="header-label">dashboard · v2.0</span>
             </div>
         </header>
 
-        <!-- MAIN -->
-        <main>
-            <!-- Add User -->
-            <section class="panel panel-add">
-                <h2>new user</h2>
-                <div class="form-group">
-                    <input type="text" id="userName" placeholder="username" class="input">
-                    <input type="text" id="userTag" placeholder="discord tag" class="input">
+        <!-- STATS CARDS -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-value" id="userCount">0</span>
+                <span class="stat-label">сотрудников</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value" id="warnCount">0</span>
+                <span class="stat-label">выговоров</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value" id="roleCount">0</span>
+                <span class="stat-label">ролей</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value" id="activeCount">0</span>
+                <span class="stat-label">активных</span>
+            </div>
+        </section>
+
+        <!-- CONTROLS -->
+        <section class="controls">
+            <div class="control-group">
+                <h3>Добавить сотрудника</h3>
+                <div class="form-row">
+                    <input type="text" id="userName" placeholder="Имя" class="input">
+                    <input type="text" id="userTag" placeholder="Discord Tag" class="input">
                     <select id="userRole" class="input"></select>
-                    <button onclick="addUser()" class="btn primary">+ add</button>
+                    <button onclick="addUser()" class="btn primary">+ Добавить</button>
                 </div>
-            </section>
+            </div>
+            <div class="control-group">
+                <h3>Управление ролями</h3>
+                <div class="form-row">
+                    <input type="text" id="newRoleName" placeholder="Название роли" class="input">
+                    <button onclick="addRole()" class="btn secondary">Создать</button>
+                </div>
+            </div>
+        </section>
 
-            <!-- Add Role -->
-            <section class="panel panel-role">
-                <h2>roles</h2>
-                <div class="form-group">
-                    <input type="text" id="newRoleName" placeholder="new role name" class="input">
-                    <button onclick="addRole()" class="btn secondary">create</button>
-                </div>
-            </section>
-
-            <!-- Table -->
-            <section class="panel panel-table">
-                <div class="table-header">
-                    <h2>members</h2>
-                    <span class="badge" id="userBadge">0 active</span>
-                </div>
-                <div class="table-wrap">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>user</th>
-                                <th>discord</th>
-                                <th>role</th>
-                                <th>warnings</th>
-                                <th>actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="userTableBody"></tbody>
-                    </table>
-                </div>
-            </section>
-        </main>
+        <!-- TABLE -->
+        <section class="table-section">
+            <div class="table-header">
+                <h2>Список сотрудников</h2>
+                <span class="table-badge" id="userBadge">всего: 0</span>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>сотрудник</th>
+                            <th>discord</th>
+                            <th>роль</th>
+                            <th>выговоры</th>
+                            <th>действия</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userTableBody">
+                        <!-- JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
         <!-- FOOTER -->
         <footer class="footer">
-            <span>DSCRM · 2026</span>
-            <span>digital interface</span>
+            <span>Discord CRM · 2026</span>
+            <span>dashboard interface</span>
         </footer>
     </div>
 
