@@ -1,0 +1,75 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1e1e2f;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #2a2a40;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+h1, h2 {
+    color: #b0b0ff;
+}
+input, select {
+    padding: 10px;
+    margin: 5px 5px 5px 0;
+    border: none;
+    border-radius: 8px;
+    background: #3a3a55;
+    color: #fff;
+    font-size: 14px;
+    width: 200px;
+}
+button {
+    padding: 10px 20px;
+    background: #5865F2;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+button:hover {
+    background: #4752c4;
+    transform: scale(1.02);
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #3a3a55;
+}
+th {
+    background: #1e1e2f;
+    color: #b0b0ff;
+}
+.warn-btn {
+    background: #f04747;
+    margin-right: 5px;
+}
+.warn-btn:hover {
+    background: #c03535;
+}
+.delete-btn {
+    background: #4a4a5a;
+}
+.delete-btn:hover {
+    background: #6a6a7a;
+}
+.add-user, .add-role {
+    background: #22223a;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
