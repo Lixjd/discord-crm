@@ -1,6 +1,6 @@
 const GITHUB_USERNAME = 'lixjd';
 const REPO_NAME = 'discord-crm';
-const TOKEN = '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';
+const TOKEN = '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';
 
 const FILE_PATH = 'data.json';
 let data = null;
