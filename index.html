@@ -3,48 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discord CRM</title>
+    <title>Discord CRM Pro</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>🎮 Discord CRM</h1>
-        
-        <!-- Блок добавления пользователя -->
-        <div class="add-user">
-            <h2>➕ Добавить участника</h2>
-            <input type="text" id="userName" placeholder="Имя">
-            <input type="text" id="userTag" placeholder="Discord Tag (name#1234)">
-            <select id="userRole">
-                <!-- Сюда будут подгружаться роли из JSON -->
-            </select>
-            <button onclick="addUser()">Добавить</button>
-        </div>
+    <div class="background">
+        <div class="glow-orb glow-orb-1"></div>
+        <div class="glow-orb glow-orb-2"></div>
+        <div class="glow-orb glow-orb-3"></div>
+    </div>
 
-        <!-- Блок добавления роли -->
-        <div class="add-role">
-            <h2>⚙️ Добавить новую роль</h2>
-            <input type="text" id="newRoleName" placeholder="Название роли">
-            <button onclick="addRole()">Создать роль</button>
+    <div class="container">
+        <!-- Шапка -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">⚡</div>
+                <div>
+                    <h1>Discord CRM</h1>
+                    <span class="subtitle">PRO · v2.0</span>
+                </div>
+            </div>
+            <div class="header-stats">
+                <div class="stat">
+                    <span class="stat-number" id="userCount">0</span>
+                    <span class="stat-label">Участников</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="warnCount">0</span>
+                    <span class="stat-label">Выговоров</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Панель управления -->
+        <div class="dashboard">
+            <!-- Добавление участника -->
+            <div class="card">
+                <h2>➕ Новый участник</h2>
+                <div class="form-row">
+                    <input type="text" id="userName" placeholder="Имя пользователя" class="input-dark">
+                    <input type="text" id="userTag" placeholder="Discord Tag (name#1234)" class="input-dark">
+                    <select id="userRole" class="input-dark">
+                        <!-- Роли подгрузятся -->
+                    </select>
+                    <button onclick="addUser()" class="btn-primary">
+                        <span>+</span> Добавить
+                    </button>
+                </div>
+            </div>
+
+            <!-- Добавление роли -->
+            <div class="card card-small">
+                <h2>⚙️ Управление ролями</h2>
+                <div class="form-row">
+                    <input type="text" id="newRoleName" placeholder="Название роли" class="input-dark">
+                    <button onclick="addRole()" class="btn-secondary">Создать роль</button>
+                </div>
+            </div>
         </div>
 
         <!-- Таблица пользователей -->
-        <h2>👥 Список участников</h2>
-        <table id="userTable">
-            <thead>
-                <tr>
-                    <th>Имя</th>
-                    <th>Discord Tag</th>
-                    <th>Роль</th>
-                    <th>Выговоры</th>
-                    <th>Действия</th>
-                </tr>
-            </thead>
-            <tbody id="userTableBody">
-                <!-- Сюда JS будет вставлять строки -->
-            </tbody>
-        </table>
+        <div class="table-wrapper">
+            <div class="table-header">
+                <h2>👥 Участники сервера</h2>
+                <span class="badge" id="userBadge">0 online</span>
+            </div>
+            <div class="table-scroll">
+                <table id="userTable">
+                    <thead>
+                        <tr>
+                            <th>Участник</th>
+                            <th>Discord</th>
+                            <th>Роль</th>
+                            <th>Выговоры</th>
+                            <th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userTableBody">
+                        <!-- JS вставит строки -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <span>© 2026 Discord CRM Pro</span>
+            <span>⚡ Сделано с ❤️</span>
+        </footer>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
