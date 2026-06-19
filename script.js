@@ -1,8 +1,8 @@
 // Настройки репозитория (ЗАМЕНИТЕ НА СВОИ!)
-const GITHUB_USERNAME = 'ВАШ_НИК_НА_GITHUB'; // например 'ivanov'
+const GITHUB_USERNAME = 'lixjd'; // например 'ivanov'
 const REPO_NAME = 'discord-crm'; // название вашего репозитория
 const FILE_PATH = 'data.json'; // путь к файлу
-const TOKEN = 'ВАШ_ТОКЕН'; // Сюда вставим токен позже
+const TOKEN = 'MTUwMDIzNTkwNzEzODE5NTY1Ng.Gr4HbH.1xMRs3SHyXxEMFcMF9Tf7DZPRzu7LlQvRWGQXo'; // Сюда вставим токен позже
 
 // Текущие данные
 let data = null;
