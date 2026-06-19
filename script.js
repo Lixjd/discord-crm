@@ -29,7 +29,7 @@ async function saveData() {
 
         const body = {
             message: `update ${new Date().toLocaleString()}`,
-            content: btoa(JSON.stringify(data, null, 2)),
+            content: btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2)))),
             sha: sha
         };
 
