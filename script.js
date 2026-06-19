@@ -2,7 +2,7 @@
 const GITHUB_USERNAME = 'lixjd'; // например 'ivanov'
 const REPO_NAME = 'discord-crm'; // название вашего репозитория
 const FILE_PATH = 'data.json'; // путь к файлу
-const TOKEN = 'MTUwMDIzNTkwNzEzODE5NTY1Ng.Gr4HbH.1xMRs3SHyXxEMFcMF9Tf7DZPRzu7LlQvRWGQXo'; // Сюда вставим токен позже
+const TOKEN = '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'; // Сюда вставим токен позже
 
 // Текущие данные
 let data = null;
