@@ -43,14 +43,14 @@ async function saveData() {
         });
 
         if (result.ok) {
-            alert('saved');
+            alert('Сохранено');
             updateStats();
         } else {
-            alert('error saving');
+            alert('Ошибка сохранения');
         }
     } catch (e) {
         console.error(e);
-        alert('error saving');
+        alert('Ошибка сохранения');
     }
 }
 
@@ -71,7 +71,9 @@ function updateStats() {
     document.getElementById('userCount').textContent = data.users.length;
     const warns = data.users.reduce((s, u) => s + u.warns.length, 0);
     document.getElementById('warnCount').textContent = warns;
-    document.getElementById('userBadge').textContent = data.users.length + ' active';
+    document.getElementById('roleCount').textContent = data.roles.length;
+    document.getElementById('activeCount').textContent = data.users.filter(u => u.warns.length < 3).length;
+    document.getElementById('userBadge').textContent = `всего: ${data.users.length}`;
 }
 
 function renderTable() {
@@ -110,10 +112,10 @@ function renderTable() {
 
         const tdActions = document.createElement('td');
         const warnBtn = document.createElement('button');
-        warnBtn.textContent = 'warn';
+        warnBtn.textContent = 'выговор';
         warnBtn.className = 'btn-warn';
         warnBtn.onclick = function() {
-            const reason = prompt('reason:');
+            const reason = prompt('Причина выговора:');
             if (reason) {
                 user.warns.push({ date: new Date().toISOString().split('T')[0], reason });
                 saveData();
@@ -122,10 +124,10 @@ function renderTable() {
         tdActions.appendChild(warnBtn);
 
         const delBtn = document.createElement('button');
-        delBtn.textContent = 'delete';
+        delBtn.textContent = 'удалить';
         delBtn.className = 'btn-delete';
         delBtn.onclick = function() {
-            if (confirm(`delete ${user.name}?`)) {
+            if (confirm(`Удалить ${user.name}?`)) {
                 data.users.splice(index, 1);
                 saveData();
             }
@@ -140,7 +142,7 @@ window.addUser = function() {
     const name = document.getElementById('userName').value.trim();
     const tag = document.getElementById('userTag').value.trim();
     const role = document.getElementById('userRole').value;
-    if (!name || !tag) return alert('fill all fields');
+    if (!name || !tag) return alert('Заполните все поля');
     data.users.push({ id: Date.now().toString(), name, discord_tag: tag, role, warns: [] });
     document.getElementById('userName').value = '';
     document.getElementById('userTag').value = '';
@@ -149,8 +151,8 @@ window.addUser = function() {
 
 window.addRole = function() {
     const r = document.getElementById('newRoleName').value.trim();
-    if (!r) return alert('enter role name');
-    if (data.roles.includes(r)) return alert('role exists');
+    if (!r) return alert('Введите название роли');
+    if (data.roles.includes(r)) return alert('Такая роль уже есть');
     data.roles.push(r);
     document.getElementById('newRoleName').value = '';
     saveData();
