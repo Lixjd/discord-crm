@@ -1,46 +1,41 @@
 const GITHUB_USERNAME = 'lixjd';
 const REPO_NAME = 'discord-crm';
-const TOKEN = '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';
+const TOKEN = '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';
 
 const FILE_PATH = 'data.json';
 let data = null;
 
-console.log('🔥 Script загружен!');
+console.log('🚀 CRM загружена');
 
 async function loadData() {
     try {
-        console.log('📥 Загрузка данных...');
         const url = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${FILE_PATH}`;
         const res = await fetch(url);
-        console.log('📥 Статус:', res.status);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        if (!res.ok) throw new Error(`Ошибка загрузки: ${res.status}`);
         const file = await res.json();
         const content = atob(file.content);
         data = JSON.parse(content);
-        console.log('✅ Загружено:', data.users.length, 'пользователей');
         updateUI();
         updateStats();
     } catch (e) {
-        console.error('❌ Ошибка:', e);
+        console.error(e);
         alert('Ошибка загрузки данных');
     }
 }
 
 async function saveData() {
     try {
-        console.log('💾 Сохранение...');
         const url = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${FILE_PATH}`;
         const res = await fetch(url);
         const file = await res.json();
         const sha = file.sha;
-        console.log('📝 SHA:', sha);
 
         const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
 
         const result = await fetch(url, {
             method: 'PUT',
             headers: {
-                'Authorization': `token ${TOKEN}`,
+                'Authorization': `Bearer ${TOKEN}`,
                 'Content-Type': 'application/json',
                 'Accept': 'application/vnd.github.v3+json'
             },
@@ -51,18 +46,15 @@ async function saveData() {
             })
         });
 
-        console.log('💾 Статус сохранения:', result.status);
-
         if (result.ok) {
             alert('✅ Сохранено!');
             updateStats();
         } else {
             const err = await result.json();
-            console.error('❌ Ошибка:', err);
             alert('❌ Ошибка: ' + (err.message || 'неизвестно'));
         }
     } catch (e) {
-        console.error('❌ Ошибка:', e);
+        console.error(e);
         alert('❌ Ошибка сохранения');
     }
 }
